@@ -22,5 +22,13 @@ git push -uf origin main
 ```
 ## Component
 - Dockerfile
-- image(Folder)
-- main.py
+- main.py : 우리의 의도대로 돌아가야하지만.. 약간의 error가 발생하는 코드 ... (수정 필요요)
+- test.py : 간단한 기능이 들어가 있음 
+
+## Dockerfile
+```
+# Dockerfile Build
+docker build . -t 3D-image:0.1
+# 실행 및 포트포워딩
+docker run --name kch-nginx -d -p 8080:80 3d-image:0.1
+```
