@@ -8,6 +8,7 @@ import random
 # Container 가로, 세로, 높이
 containers = [
     [250, 250, 500],
+    [250, 250, 500],
     [250, 250, 500]
 ]
 # 물류 등록 - 물류 이름, 가로, 세로, 높이, 무게,수량
@@ -125,4 +126,4 @@ for t in range(len(containers)):
     ax.set_zlim([0,truckZ])
 
     plt.show()
-    plt.savefig("test"+str(t)+".png")
+    plt.savefig("./test"+str(t)+".png")

@@ -28,7 +28,7 @@ git push -uf origin main
 ## Dockerfile
 ```
 # Dockerfile Build
-docker build . -t 3D-image:0.1
+docker build . -t 3d-image:0.1
 # 실행 및 포트포워딩
 docker run --name kch-nginx -d -p 8080:80 3d-image:0.1
 ```
