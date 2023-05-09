@@ -126,4 +126,4 @@ for t in range(len(containers)):
     ax.set_zlim([0,truckZ])
 
     plt.show()
-    plt.savefig("./test"+str(t)+".png")
+    plt.savefig("test"+str(t)+".png")
