@@ -1,0 +1,4 @@
+py3dbp==1.1.2
+matplotlib==3.7.1
+numpy==1.24.2
+pandas~=2.0.1
