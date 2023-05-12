@@ -61,7 +61,7 @@ for t in range(len(containers)):
                 packer.add_item(Item(items[i][0], items[i][1], items[i][2], items[i][3], items[i][4]))
 
     # packer.pack()
-    packer.pack(bigger_first=True)  # 큰 것 우선
+    packer.pack(bigger_first=False)  # 큰 것 우선
 
     positions = []
     sizes = []
