@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 import os
-from Data.input import items_data
+from Data.data_slicing import items_data
 
 
 # Container 가로, 세로, 높이
