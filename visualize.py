@@ -3,8 +3,9 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 import numpy as np
 import matplotlib.pyplot as plt
 import random
-from Data.input import items_data
 import os
+from Data.input import items_data
+
 
 # Container 가로, 세로, 높이
 containers = [
