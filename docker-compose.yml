@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  box1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - START_ROW=21
+    ports:
+      - "8000:80"
+  box2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - START_ROW=31
+    ports:
+      - "8001:80"
