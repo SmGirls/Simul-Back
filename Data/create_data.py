@@ -30,4 +30,4 @@ subject["무게"] = box_w
 subject["수량"] = box_n
 
 #csv 파일로 지정
-subject.to_csv("./Data/test_input.csv", encoding="utf-8-sig", index=False)
+subject.to_csv("./test_input.csv", encoding="utf-8-sig", index=False)
