@@ -1,9 +1,12 @@
 # build stage
 FROM python:3.8.11-slim as builder
+ARG row
+ENV START_ROW=$row
+
 WORKDIR /usr/src/app
 COPY . .
 RUN pip3 install -r requirements.txt
-RUN python3 ./Data/create_data.py
+RUN python3 ./Data/data_slicing.py
 RUN python3 ./visualize.py
 
 # production stage
