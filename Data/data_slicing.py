@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-start_row = int(os.getenv('START_ROW', '0'))
+start_row = int(os.getenv('START_ROW', '1'))
 
 # csv skiprows ~ 10개 읽어오기
 # csv type : DataFrame

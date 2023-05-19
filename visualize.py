@@ -122,3 +122,5 @@ for t in range(len(containers)):
 
     plt.show()
     plt.savefig("result" + ".png")
+
+print(os.environ['START_ROW'])
