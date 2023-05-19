@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - START_ROW=21
+      - START_ROW=1
     ports:
       - "8000:80"
   box2:
@@ -14,6 +14,31 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - START_ROW=31
+      - START_ROW=11
     ports:
       - "8001:80"
+    depends_on:
+      - box1
+  box3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - START_ROW=21
+    ports:
+      - "8002:80"
+    depends_on:
+      - box1
+      - box2
+  box4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - START_ROW=31
+    ports:
+      - "8003:80"
+    depends_on:
+      - box1
+      - box2
+      - box3
