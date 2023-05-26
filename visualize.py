@@ -3,8 +3,9 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 import numpy as np
 import matplotlib.pyplot as plt
 import random
-from Data.data_slicing import items_data
 import os
+from Data.data_slicing import items_data
+
 
 # Container 가로, 세로, 높이
 containers = [
@@ -12,7 +13,7 @@ containers = [
 ]
 # 물류 등록 - 물류 이름, 가로, 세로, 높이, 무게,수량
 items = items_data
-6
+
 # 3D에 필요한 색깔 list
 colorList = ["crimson", "limegreen", "g", "r", "c", "m", "y", "k"]
 
@@ -54,7 +55,7 @@ for t in range(len(containers)):
     packer.add_bin(Bin('LB', truckX, truckY, truckZ, 10000.0))
 
     # 물류 등록 - (물류 이름, 가로, 세로, 높이, 무게) * 수량
-    for i in range(len(items)):
+    for i in range(1,len(items)):
         # 물류의 수량 만큼 곱해주기기
         each_items_cnt = int(items[i][5])
         # 물류의 수량이 0이면 안됨^^
@@ -121,3 +122,5 @@ for t in range(len(containers)):
 
     # plt.show()
     plt.savefig("result" + ".png")
+
+print(os.environ['START_ROW'])
