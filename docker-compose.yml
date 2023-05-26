@@ -2,43 +2,26 @@ version: '3.4'
 
 services:
   box1:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: smgirls/simulator
     environment:
       - START_ROW=1
     ports:
-      - "8000:80"
+      - "5000:5000"
   box2:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: smgirls/simulator
     environment:
       - START_ROW=11
     ports:
-      - "8001:80"
-    depends_on:
-      - box1
+      - "5001:5000"
   box3:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: smgirls/simulator
     environment:
       - START_ROW=21
     ports:
-      - "8002:80"
-    depends_on:
-      - box1
-      - box2
+      - "5002:5000"
   box4:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: smgirls/simulator
     environment:
       - START_ROW=31
     ports:
-      - "8003:80"
-    depends_on:
-      - box1
-      - box2
-      - box3
+      - "5003:5000"
