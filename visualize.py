@@ -4,7 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 import os
-from Data.data_slicing import items_data
+from share.Data.data_slicing import items_data
+import time
 
 
 # Container 가로, 세로, 높이
@@ -120,7 +121,6 @@ for t in range(len(containers)):
     ax.set_ylim([0, truckY])
     ax.set_zlim([0, truckZ])
 
+    time.sleep(10)
     # plt.show()
-    plt.savefig("result" + ".png")
-
-print(os.environ['START_ROW'])
+    plt.savefig("./share/static/images/result"+ os.getenv('START_ROW', '1') + ".png")
