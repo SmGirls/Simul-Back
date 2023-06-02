@@ -1,27 +1,60 @@
 version: '3.4'
 
+volumes:
+  shared_data:
+
 services:
+  web:
+    image: smgirls/web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - shared_data:/usr/src/app/share
+    ports:
+      - 7000:7000
   box1:
-    image: smgirls/simulator
+    image: smgirls/simul
+    build:
+      context: .
+      dockerfile: Dockerfile-simul
+    volumes:
+      - shared_data:/usr/src/app/share
     environment:
       - START_ROW=1
-    ports:
-      - "5000:5000"
   box2:
-    image: smgirls/simulator
+    image: smgirls/simul
+    build:
+      context: .
+      dockerfile: Dockerfile-simul
+    volumes:
+      - shared_data:/usr/src/app/share
     environment:
       - START_ROW=11
-    ports:
-      - "5001:5000"
   box3:
-    image: smgirls/simulator
+    image: smgirls/simul
+    build:
+      context: .
+      dockerfile: Dockerfile-simul
+    volumes:
+      - shared_data:/usr/src/app/share
     environment:
       - START_ROW=21
-    ports:
-      - "5002:5000"
   box4:
-    image: smgirls/simulator
+    image: smgirls/simul
+    build:
+      context: .
+      dockerfile: Dockerfile-simul
+    volumes:
+     - shared_data:/usr/src/app/share
     environment:
       - START_ROW=31
-    ports:
-      - "5003:5000"
+  box5:
+    image: smgirls/simul
+    build:
+      context: .
+      dockerfile: Dockerfile-simul
+    volumes:
+      - shared_data:/usr/src/app/share
+    environment:
+      - START_ROW=41
