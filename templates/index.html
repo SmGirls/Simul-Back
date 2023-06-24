@@ -5,6 +5,9 @@
   </head>
   <body>
     <h1>Result</h1>
-    <img src="{{ url_for('static', filename='result.png') }}">
+    <div class="print"> {{test}}를 전달받았습니다. </div>
+     {% for pic in pics %}
+        <img src="{{ url_for('static', filename='images/{}'.format(pic)) }}">
+     {% endfor%}
   </body>
 </html>
