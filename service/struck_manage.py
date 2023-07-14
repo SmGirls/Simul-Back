@@ -6,7 +6,7 @@ import json
 json_path = "/home/ec2-user/kch/Simul-Back/share/Data/test_input.json"
 
 def struck_list():
-    with open(json_path,'r') as file:
+    with open(json_path,'r',encoding='utf-8-sig') as file:
         strucks_list = json.load(file)
     return strucks_list
 def add_quantity(struck):
