@@ -1,4 +1,4 @@
-﻿물류 이름,가로,세로,높이,무게,수량
+﻿productname,width,depth,height,weight,count
 box1,250,220,220,100,5
 box2,180,160,250,300,4
 box3,110,70,130,250,1

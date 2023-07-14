@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for
 import os
+from service import struck_manage
 # app = Flask(__name__)
 app = Flask(__name__,
             static_url_path='',
@@ -16,7 +17,7 @@ def webserver():
 
 @app.route('/struck_manage')
 def struck_manage():
-    return "struck_manage"
+    return struck_manage.struck_list()
 
 @app.route('/container_manage')
 def container_manage():

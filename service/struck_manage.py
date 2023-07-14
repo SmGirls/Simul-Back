@@ -1,9 +1,13 @@
 # 물류 정보 관리
 
 import pandas as pd
+import json
+
+json_path = "/home/ec2-user/kch/Simul-Back/share/Data/test_input.json"
 
 def struck_list():
-    strucks_list = pd.read_csv("../share/Data/test_input.csv") 
+    with open(json_path,'r') as file:
+        strucks_list = json.load(file)
     return strucks_list
 def add_quantity(struck):
     struck += 1
