@@ -14,6 +14,14 @@ def webserver():
     return render_template('index.html', pics=img_name_list, test = img_name_list)
     #return render_template('index.html', test=img_name_list)
 
+@app.route('/struck_manage')
+def struck_manage():
+    return "struck_manage"
+
+@app.route('/container_manage')
+def container_manage():
+    return "contaienr_manage"
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=7000)
 
