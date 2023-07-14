@@ -3,7 +3,7 @@
 import pandas as pd
 import json
 
-json_path = "/home/ec2-user/kch/Simul-Back/share/Data/test_input.json"
+json_path = "./share/Data/test_input.json"
 
 def struck_list():
     with open(json_path,'r',encoding='utf-8-sig') as file:
