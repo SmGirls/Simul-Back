@@ -3,7 +3,7 @@ FROM python:3.10.11-slim
 WORKDIR /usr/src/app
 
 COPY /share /usr/src/app/share
-COPY Dockerfile .
+COPY Dockerfile-simul .
 COPY requirements-simul.txt .
 COPY visualize.py .
 
