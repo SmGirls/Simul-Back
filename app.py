@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, jsonify
 from flask_restx import Resource, Namespace, Api
+from flask_cors import CORS
 import pandas as pd
 import os
 import json
@@ -9,7 +10,7 @@ app = Flask(__name__,
             static_url_path='',
             static_folder='share/static',
             template_folder='templates')
-
+CORS(app)
 struck_list = []
 # @app.route('/')
 # def webserver():
