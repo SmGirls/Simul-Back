@@ -1,10 +1,16 @@
 from flask import Flask, render_template, url_for
 import os
+import json
+
 # app = Flask(__name__)
 app = Flask(__name__,
             static_url_path='',
             static_folder='share/static',
             template_folder='templates')
+#json
+json_path = "./share/Data/test_input.json"
+with open(json_path,'r',encoding='utf-8-sig') as file:
+    strucks_list = json.load(file)
 
 @app.route('/')
 def webserver():
@@ -16,7 +22,7 @@ def webserver():
 
 @app.route('/struck_manage')
 def struck_manage():
-    return "struck_manage"
+    return strucks_list
 
 @app.route('/container_manage')
 def container_manage():
