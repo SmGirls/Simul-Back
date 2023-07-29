@@ -9,7 +9,7 @@ app = Flask(__name__,
             static_url_path='',
             static_folder='share/static',
             template_folder='templates')
-            
+
 struck_list = []
 # @app.route('/')
 # def webserver():
@@ -34,8 +34,8 @@ def upload_csvlist():
     if file and file.filename.endswith('.csv'):
         df = pd.read_csv(file)
         processed_data = df.to_dict(orient='records')
-        # 이 코드를 통해 csv 파일이 stuck_list.json 파일명으로 저장됨
-        with open('stuck_list.json', 'w') as json_file:
+        # 이 코드를 통해 csv 파일이 struck_list.json 파일명으로 저장됨
+        with open('struck_list.json', 'w') as json_file:
             json_file.write(pd.Series(processed_data).to_json(orient='records'))
             struck_list.extend(processed_data)
         return jsonify({'message': 'CSV data processed and saved as JSON.'})
