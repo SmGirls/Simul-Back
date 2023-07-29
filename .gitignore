@@ -2,3 +2,4 @@ __pycache__
 Data/__pycache__/*
 *.png
 service/__pycache__
+struck_list.json
