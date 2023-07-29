@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
+from flask_restx import Resource, Namespace, Api
 import os
 import json
 
@@ -20,14 +21,34 @@ def webserver():
     return render_template('index.html', pics=img_name_list, test = img_name_list)
     #return render_template('index.html', test=img_name_list)
 
-@app.route('/struck_manage')
-def struck_manage():
+@app.route('/struck_list')
+def struck_list():
     return strucks_list
+
+# 물류 수량 수정
+@app.route('/struck_list/<string:productname>', methods=['PUT'])
+def struck_list_put(productname):
+    update_data = request.get_json()
+    for list in strucks_list:
+        if list['productname'] == productname:
+            list['count'] = update_data['count']
+            return strucks_list
+    return jsonify("Failure! Index Error!")
+
+#물류 삭제 
+@app.route('/struck_list/<string:productname>', methods=['DELETE'])
+def struck_list_delete(productname):
+    for i, list in enumerate(strucks_list):
+        if list['productname'] == productname:
+            strucks_list.pop(i)
+            return strucks_list
+    return jsonify("Failure! Index Error!")
 
 @app.route('/container_manage')
 def container_manage():
-    return "contaienr_manage"
+    return "container_manage"
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=7000)
+
+    app.run(host="0.0.0.0", port=7000,debug=True)
 
