@@ -5,6 +5,8 @@ import pandas as pd
 import os
 import json
 
+import visualize_test
+
 # app = Flask(__name__)
 app = Flask(__name__,
             static_url_path='',
@@ -84,6 +86,14 @@ def create_select_list():
     select_list = [item for item in struck_list if item['productname'] in selected_product_names]
     
     return jsonify(select_list)
+
+# 선택한 물류에 대해 시뮬레이션
+@app.route('/simulation', methods=['GET'])
+def show_simulation():
+    global select_list
+    visualize_test.visulaize_select_list(select_list)  # Pass the select_list to visualize.py
+    #return render_template('simulation.html', select_list=select_list)
+    return True
 
 # 시뮬레이션한 물류에 대한 컨테이너 적재 이미지 리스트
 @app.route('/container_list')
