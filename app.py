@@ -14,6 +14,7 @@ app = Flask(__name__,
             template_folder='templates')
 CORS(app)
 struck_list = []
+select_list =[]
 # @app.route('/')
 # def webserver():
 #     path = './share/static/images'
@@ -78,10 +79,11 @@ def view_select_list():
 # 물류 정보 중 컨테이너에 적재하고 싶은 물류 선택
 @app.route('/select_list', methods=['POST'])
 def create_select_list():
+    global select_list
+    
     data = request.get_json()    # post로 이런 json 형식으로 넘겨주면 됨 {"selected_product_list": ["box1", "box2"]}
     selected_product_names = data['selected_product_list']
     
-    global select_list
     # Create the select_list based on the selected product names
     select_list = [item for item in struck_list if item['productname'] in selected_product_names]
     
@@ -91,7 +93,20 @@ def create_select_list():
 @app.route('/simulation', methods=['GET'])
 def show_simulation():
     global select_list
-    visualize_test.visulaize_select_list(select_list)  # Pass the select_list to visualize.py
+    select_items_list=[]
+    containers = [
+        [1000, 1000, 1000],
+    ]
+    for item in select_list:
+        select_items_list.append([
+            item['productname'],
+            item['width'],
+            item['depth'],
+            item['height'],
+            item['weight'],
+            item['count']
+        ])   
+    visualize_test.simulation(containers,select_items_list)  # Pass the select_list to visualize.py
     #return render_template('simulation.html', select_list=select_list)
     return True
 

@@ -7,44 +7,45 @@ import os
 import time
 
 
-# Container 가로, 세로, 높이
-containers = [
-    [250, 250, 500],
-]
-# 물류 등록 - 물류 이름, 가로, 세로, 높이, 무게,수량
-# items = items_data
-# print(items)
-# 3D에 필요한 색깔 list
-colorList = ["crimson", "limegreen", "g", "r", "c", "m", "y", "k"]
-items=[]
+# # Container 가로, 세로, 높이
+# containers = [
+#     [1000, 1000, 1000],
+# ]
+# # 물류 등록 - 물류 이름, 가로, 세로, 높이, 무게,수량
+# items = [['box1', 80, 160, 250, 300, 4], ['box2', 180, 160, 250, 300, 4],['box3', 80, 160, 250, 300, 4], ['box4', 180, 160, 250, 300, 4]]
+# # print(items)
+# # 3D에 필요한 색깔 list
 
-# 3D화
-def cuboid_data2(o, size=(1, 1, 1)):
-    X = [[[0, 1, 0], [0, 0, 0], [1, 0, 0], [1, 1, 0]],
-         [[0, 0, 0], [0, 0, 1], [1, 0, 1], [1, 0, 0]],
-         [[1, 0, 1], [1, 0, 0], [1, 1, 0], [1, 1, 1]],
-         [[0, 0, 1], [0, 0, 0], [0, 1, 0], [0, 1, 1]],
-         [[0, 1, 0], [0, 1, 1], [1, 1, 1], [1, 1, 0]],
-         [[0, 1, 1], [0, 0, 1], [1, 0, 1], [1, 1, 1]]]
-    X = np.array(X).astype(float)
-    for i in range(3):
-        X[:, :, i] *= size[i]
-    X += np.array(o)
-    return X
+#items=[]
 
 
-def plotCubeAt2(positions, sizes=None, colors=None, **kwargs):
-    if not isinstance(colors, (list, np.ndarray)): colors = ["C0"] * len(positions)
-    if not isinstance(sizes, (list, np.ndarray)): sizes = [(1, 1, 1)] * len(positions)
-    g = []
-    for p, s, c in zip(positions, sizes, colors):
-        g.append(cuboid_data2(p, size=s))
-    return Poly3DCollection(np.concatenate(g),
-                            facecolors=np.repeat(colors, 6), **kwargs)
+def simulation(containers,items):
+    colorList = ["crimson", "limegreen", "g", "r", "c", "m", "y", "k"]
+    # 3D화
+    def cuboid_data2(o, size=(1, 1, 1)):
+        X = [[[0, 1, 0], [0, 0, 0], [1, 0, 0], [1, 1, 0]],
+            [[0, 0, 0], [0, 0, 1], [1, 0, 1], [1, 0, 0]],
+            [[1, 0, 1], [1, 0, 0], [1, 1, 0], [1, 1, 1]],
+            [[0, 0, 1], [0, 0, 0], [0, 1, 0], [0, 1, 1]],
+            [[0, 1, 0], [0, 1, 1], [1, 1, 1], [1, 1, 0]],
+            [[0, 1, 1], [0, 0, 1], [1, 0, 1], [1, 1, 1]]]
+        X = np.array(X).astype(float)
+        for i in range(3):
+            X[:, :, i] *= size[i]
+        X += np.array(o)
+        return X
 
 
-def visulaize_select_list(select_list):
-    itmes = select_list 
+    def plotCubeAt2(positions, sizes=None, colors=None, **kwargs):
+        if not isinstance(colors, (list, np.ndarray)): colors = ["C0"] * len(positions)
+        if not isinstance(sizes, (list, np.ndarray)): sizes = [(1, 1, 1)] * len(positions)
+        g = []
+        for p, s, c in zip(positions, sizes, colors):
+            g.append(cuboid_data2(p, size=s))
+        return Poly3DCollection(np.concatenate(g),
+                                facecolors=np.repeat(colors, 6), **kwargs)
+
+
     # 컨테이너 적재
     for t in range(len(containers)):
         packer = Packer()
@@ -57,7 +58,7 @@ def visulaize_select_list(select_list):
         packer.add_bin(Bin('LB', truckX, truckY, truckZ, 10000.0))
 
         # 물류 등록 - (물류 이름, 가로, 세로, 높이, 무게) * 수량
-        for i in range(1,len(items)):
+        for i in range(len(items)):
             # 물류의 수량 만큼 곱해주기기
             each_items_cnt = int(items[i][5])
             # 물류의 수량이 0이면 안됨^^
@@ -125,3 +126,5 @@ def visulaize_select_list(select_list):
         time.sleep(10)
         # plt.show()
         plt.savefig("./share/static/images/result"+ os.getenv('START_ROW', '1') + ".png")
+
+# simulation(containers,items)
