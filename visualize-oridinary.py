@@ -14,7 +14,8 @@ containers = [
 ]
 # 물류 등록 - 물류 이름, 가로, 세로, 높이, 무게,수량
 items = items_data
-
+# items = [['box1', 250, 220, 220, 100, 5], ['box2', 180, 160, 250, 300, 4]]
+print(items)
 # 3D에 필요한 색깔 list
 colorList = ["crimson", "limegreen", "g", "r", "c", "m", "y", "k"]
 
