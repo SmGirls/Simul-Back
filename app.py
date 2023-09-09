@@ -4,6 +4,7 @@ from flask_cors import CORS
 import pandas as pd
 import os
 import json
+import requests
 
 import visualize_func
 
@@ -88,6 +89,19 @@ def struck_list_delete(productname):
 #     select_list = [item for item in struck_list if item['productname'] in selected_product_names]
 #     print("값:",select_list) # [{'productname': 'box1', 'width': 250, 'depth': 220, 'height': 220, 'weight': 100, 'count': 5}, {'productname': 'box2', 'width': 180, 'depth': 160, 'height': 250, 'weight': 300, 'count': 4}]
 #     return jsonify(select_list)
+
+# test 중 ...
+@app.route('/simul_test')
+def send_req():
+
+    # request 통신
+    url = "http://127.0.0.1:7001/"
+    response = requests.get(url)
+
+    if response.status_code==200:
+        return response.json()
+    else:
+        return "Error: {}".format(response.status_code)
 
 # 물류 선택 후 시뮬레이션
 @app.route('/simulation', methods=['POST'])
