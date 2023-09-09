@@ -114,4 +114,4 @@ def simulation(containers,items,img_name):
         #plt.savefig("./share/static/images/result"+ os.getenv('START_ROW', '1') + ".png")
         #plt.savefig("./result.png")
         plt.savefig(img_name+".png")
-
+        # 글자 먼저 받아보고 그다음으로 이미지 받아오는걸로 해보기 

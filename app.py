@@ -95,7 +95,7 @@ def post_simulation():
     global select_list
     select_items_list = []
     
-    data = request.get_json()    # post로 이런 json 형식으로 넘겨주면 됨 {"selected_product_list": ["box1", "box2"]}
+    data = request.get_json()    # post로 이런 json 형식으로 넘겨주면 됨 {"selected_product_list": ["box1", "box2","box3."]}
     selected_product_names = data['selected_product_list']
     
     # Create the select_list based on the selected product names
@@ -112,11 +112,11 @@ def post_simulation():
         ]) 
     # 컨테이너 사이즈 
     containers = [
-        [1000, 1000, 1000],
+        [1000, 1000, 1000]
     ]
     # 이미지 이름 저장
     img_name = item['productname']
-    visualize_func.simulation(containers,select_items_list,img_name)  # Pass the select_list to visualize.py
+    visualize_func.simulation(containers,select_items_list,img_name)  # Pass the select_list to visualize.py 이부분은ㄹ rest api로 따서 넘겨줘야됨 
     return jsonify(select_items_list)
 
 
