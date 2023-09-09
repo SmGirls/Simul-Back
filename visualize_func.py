@@ -33,7 +33,7 @@ def run_simulation():
         "container_name":container_name,
         "total_count": total_count,
         "unloadable_count": unloadable_count,
-        "loaded_weight": loaded_weight,
+        "loaded_weight": float(loaded_weight),
         "image": img_name,
         "execution_date": formatted_date
     })
@@ -161,7 +161,7 @@ def simulation(containers,items,img_name):
         ax.set_zlim([0, truckZ])
 
         time.sleep(10)
-        plt.savefig("./share/static/images/"+ img_name + ".png")
+        plt.savefig("/usr/src/app/share/static/images/" + img_name + ".png")
         #plt.savefig("./result.png")
         #plt.savefig(img_name+".png")
 

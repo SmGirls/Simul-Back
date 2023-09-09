@@ -1,14 +1,22 @@
 FROM python:3.10.11-slim
 
 WORKDIR /usr/src/app
+COPY share/static/images/ ./share/static/images/
 
-COPY /share /usr/src/app/share
 COPY Dockerfile-simul .
 COPY requirements-simul.txt .
-COPY visualize.py .
 
-ENV START_ROW 1
+COPY visualize_func.py .
+
 # RUN apt-get update && apt-get install -y python3 python3-pip
 RUN pip3 install -r requirements-simul.txt
 
-CMD python3 visualize.py
+# Set environment variables for Flask application
+ENV FLASK_APP=visualize_func.py
+ENV FLASK_RUN_PORT=7001
+
+# Make port 7001 available to the world outside this container
+EXPOSE 7001
+
+# Run app.py when the container launches using flask run command.
+CMD ["flask", "run", "--host=0.0.0.0"]
